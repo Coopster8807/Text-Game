@@ -1,1 +1,51 @@
 
+def bedroom():
+    global playerItems
+    global enteredRooms
+    global openedDoors
+    enteredRooms = []
+    playerItems = []
+    openedDoors = []
+    enteredRooms += ['bedroom']
+    print('You have entered a bedroom')
+    print('There is a Subway Sandwich laying on the bed')   
+    playerAlive = True
+    exitRoom = False
+    while playerAlive == True:
+        userAction = raw_input('What would you like to do?')
+        if userAction in ['eat sandwich', 'eat', 'consume']:
+            print('You choke and die on tomatoes')
+            playerAlive = False
+        elif userAction in ['inspect', 'inspect sandwich', 'look inside', 'look', 'open', 'open sandwich']:
+            print('You find tomatoes on the sandwich.')
+            playerItems += ['tomato']
+            if userAction == 'eat tomatoes':
+                print('You choke and die on tomatoes')
+            if 'tomato' in playerItems:
+                userAction = raw_input('What would you like to do?')
+                if userAction in ['throw','kick','trash','get rid']:
+                    print('Your tomato hits the wall. A small section opens up.')
+                    userAction = raw_input('What would you like to do?')
+                    openedDoors += ['passageway']
+                    if userAction in ['stay', 'dont go','dont move']:
+                        print('Your house was on fire. You didnt move quick enough. You die from smoke inhalation just like the dude in that one show your mom watches, This is Us')
+                    elif userAction in ['go','go in', 'enter']:
+                        enteredRooms += ['passageway']  
+                        passageway() 
+                        break
+        else:
+            print('Try again weird person')
+            
+
+def passageway():
+    global playerItems
+    global enteredRooms
+    global openedDoors
+    print('You entered the passageway')
+    userAction = raw_input('What would you like to do?')
+    if userAction == 'wake up':
+        print('You woke up. good job. You arent as stupid as I thought.')
+    elif userAction in ['go forward', 'go', 'forward', 'straight', 'str8']:
+        print('you were hit by a spike trap and died')
+    else:
+        print('Your house was on fire. You didnt move quick enough. You die from smoke inhalation just like the dude in that one show your mom watches, This is Us')
