@@ -6,6 +6,9 @@ enteredRooms = []
 openedDoors = []
 
 def startGame():
+    playerItems = []
+    enteredRooms = []
+    openedDoors = []
     print('Welcome to the mysterious house thing')
     raw_input("Press enter to start the game. You are allergic to tomatoes.")
     kitchen()
@@ -30,15 +33,14 @@ def kitchen():
             if 'knife' in playerItems:
                 if manAlive == False:
                     print("It would be rude to kill the man twice. Try again!")
-                elif manAlive == True:
+                else:
                     print('Bang! Pow! You killed the man. Ya mum disintegrates just like Spiderman in Infinity War')
                     print("The man is now laying on the ground dead")
-                    userAction = raw_input('What would you like to do now? ')
                     manAlive = False
             else:
                 userAction = raw_input('How would you like to kill the man? Try again!')
         elif userAction in ['pick up knife', 'grab knife', 'finesse knife']:
-            playerItems += 'knife'
+            playerItems.append ('knife')
             print("You picked up the knife")
         elif userAction == 'open door':
             if 'key' in playerItems:
@@ -51,18 +53,16 @@ def kitchen():
                 break
             else:
                 print('You found a key!')
-                playerItems += 'key'
+                playerItems.append ('key')
         elif userAction in ['unlock door 1', 'open door 1']:
             if 'key' in playerItems:
                 print('The door slowly swings open revealing the living room')
+                livingRoom()
             else:
                 print('The door is locked')
         else:
             print("That's not a command I recognize, Try again!")
-    if 'door1' in openedDoors:
-        livingRoom()
-    else:
-        print('Your mom would be proud.')
+            
 def livingRoom():
     global playerItems
     global enteredRooms
@@ -73,21 +73,25 @@ def livingRoom():
     if 'livingRoom' in enteredRooms:
         print('This room looks vaguely familiar')
     if 'livingRoom' not in enteredRooms:
-        enteredRooms += ['livingRoom']
-    userAction = raw_input('What would you like to do? ')
+        enteredRooms.append ('livingRoom')
+
     while exitRoom == False:
+        userAction = raw_input('What would you like to do? ')
         if userAction in ['pick up gun', 'finesse gun', 'grab gun']:
-            playerItems += 'gun'
+            playerItems.append ('gun')
             print('You picked up a gun')
+            
         elif userAction in ['pet dog', "massage dog's earlobes"]:
             print('You pet the dog and it vanishes like Spiderman in Infinity War. As it vanishes, a key appears')
             print('You pick the key up')
-            playerItems += 'blue key'
+            playerItems.append ('blue key')
+            
         elif userAction in ['remove rug', 'look under rug', 'check under rug']:
             if 'blue key' in playerItems:
                 print('You find a door under the rug')
                 print('You decide to open it with the key that you found')
                 attic()
+                
         else:
             print("That's not a command I recognize, Try again!")
 
@@ -111,7 +115,7 @@ def attic():
     global openedDoors
     exitRoom = False
     boxItems = ['pencil']
-    enteredRooms += ['attic']
+    enteredRooms.append ('attic')
     print("You entered the attic.")
     print("It's pitch black, but you feel a flashlight standing on the table. You turn it on and see a dead grandma laying behind a closed box")
     while exitRoom == False:
@@ -121,7 +125,7 @@ def attic():
             print ("You opened a box and found a pencil.")
         elif userAction == 'erase the grandma' and 'pencil' in playerItems:
                 print ("You used the eraser on the pencil to erase the dead grandma. The floor falls out from beneath you and you land in a bedroom. ")
-                openedDoors += ['door4']
+                openedDoors.append ('door4')
                 exitRoom = True
                 bedroom()
         elif userAction == 'help':
@@ -134,7 +138,7 @@ def bedroom():
     enteredRooms = []
     playerItems = []
     openedDoors = []
-    enteredRooms += ['bedroom']
+    enteredRooms.append ('bedroom')
     print('You have entered a bedroom')
     print('There is a Subway Sandwich laying on the bed')   
     playerAlive = True
@@ -146,7 +150,7 @@ def bedroom():
             playerAlive = False
         elif userAction in ['inspect', 'inspect sandwich', 'look inside', 'look', 'open', 'open sandwich']:
             print('You find tomatoes on the sandwich.')
-            playerItems += ['tomato']
+            playerItems.append ('tomato')
             if userAction == 'eat tomatoes':
                 print('You choke and die on tomatoes')
             if 'tomato' in playerItems:
@@ -154,11 +158,11 @@ def bedroom():
                 if userAction in ['throw','kick','trash','get rid']:
                     print('Your tomato hits the wall. A small section opens up.')
                     userAction = raw_input('What would you like to do?')
-                    openedDoors += ['passageway']
+                    openedDoors.append ('passageway')
                     if userAction in ['stay', 'dont go','dont move']:
                         print('Your house was on fire. You didnt move quick enough. You die from smoke inhalation just like the dude in that one show your mom watches, This is Us')
                     elif userAction in ['go','go in', 'enter']:
-                        enteredRooms += ['passageway']  
+                        enteredRooms.append ('passageway')  
                         passageway() 
                         break
         else:
