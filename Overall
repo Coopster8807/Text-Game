@@ -81,6 +81,11 @@ def livingRoom():
             playerItems.append ('gun')
             print('You picked up a gun')
             
+        elif userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']:
+            print('Thanks for playing, loser!')
+            playerAlive = False
+            break
+            
         elif userAction in ['pet dog', "massage dog's earlobes"]:
             print('You pet the dog and it vanishes like Spiderman in Infinity War. As it vanishes, a key appears')
             print('You pick the key up')
