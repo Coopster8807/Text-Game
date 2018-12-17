@@ -139,7 +139,11 @@ def attic():
                 openedDoors.append ('door4')
                 exitRoom = True
                 bedroom()
-        elif userAction == 'help':
+        elif userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']:
+            print('Thanks for playing, loser!')
+            playerAlive = False
+            break
+        else:
             print('Try erasing the Grandma')
 
 def bedroom():
@@ -176,6 +180,10 @@ def bedroom():
                         enteredRooms.append ('passageway')  
                         passageway() 
                         break
+        elif userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']:
+            print('Thanks for playing, loser!')
+            playerAlive = False
+            break
         else:
             print('Try again weird person')
             
@@ -190,5 +198,9 @@ def passageway():
         print('You woke up. good job. You arent as stupid as I thought.')
     elif userAction in ['go forward', 'go', 'forward', 'straight', 'str8']:
         print('you were hit by a spike trap and died')
+    elif userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']:
+            print('Thanks for playing, loser!')
+            playerAlive = False
+            break
     else:
         print('Your house was on fire. You didnt move quick enough. You die from smoke inhalation just like the dude in that one show your mom watches, This is Us')
