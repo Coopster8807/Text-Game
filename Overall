@@ -101,18 +101,24 @@ def livingRoom():
             print("That's not a command I recognize, Try again!")
 
 def sistersroom():
-    playerItems.append ('gun')
     global enteredRooms
     print("You entered your sister's room")
     print("It's dark, but the closet light is on")
-    userAction = raw_input ("What would you like to do?")
-    if userAction in ['shoot the lock']:
+    exitRoom = False
+    while exitRoom == False
+        userAction = raw_input ("What would you like to do?")
+        if userAction in ['shoot the lock']:
             if 'gun' in playerItems:
                 print ("You shoot open the door, and inside you find a ladder leading up to the attic")
+                exitRoom = True
                 attic() 
             else:
                 print("Can't do that")
-    else:
+        elif userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']:
+            print('Thanks for playing, loser!')
+            playerAlive = False
+            break        
+        else:
             print('Shoot the lock')
 def attic():
     global enteredRooms
