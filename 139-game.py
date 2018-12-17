@@ -23,13 +23,13 @@ def kitchen():
     print('You have entered the kitchen')
     print("There, you see a man you've never met hugging ya mum")
     print('There is a locked door to your left labelled "door 1" and a knife on the counter')
-    while exitRoom == False or playerAlive == False:
+    while exitRoom == False or playerAlive == False:          #This loop makes the loop stop as soon as the player dies or exits the room
         userAction = raw_input('What would you like to do?: ')
-        if userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']:
+        if userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']: #Quit Function
             print('Thanks for playing, loser!')
             playerAlive = False
             break
-        elif userAction in ['Kill man', 'kill man', 'murder man', 'murder dude', 'stab man']:
+        elif userAction in ['Kill man', 'kill man', 'murder man', 'murder dude', 'stab man']: 
             if 'knife' in playerItems:
                 if manAlive == False:
                     print("It would be rude to kill the man twice. Try again!")
@@ -38,9 +38,9 @@ def kitchen():
                     print("The man is now laying on the ground dead")
                     manAlive = False
             else:
-                userAction = raw_input('How would you like to kill the man? Try again!')
+                userAction = raw_input('How would you like to kill the man? Try again!')  # displays if you don't have a knife
         elif userAction in ['pick up knife', 'grab knife', 'finesse knife']:
-            playerItems.append ('knife')
+            playerItems.append ('knife') #adds knife to player items
             print("You picked up the knife")
         elif userAction == 'open door':
             if 'key' in playerItems:
@@ -57,7 +57,7 @@ def kitchen():
         elif userAction in ['unlock door 1', 'open door 1']:
             if 'key' in playerItems:
                 print('The door slowly swings open revealing the living room')
-                livingRoom()
+                livingRoom() #goes to next room
             else:
                 print('The door is locked')
         else:
@@ -75,18 +75,18 @@ def livingRoom():
     if 'livingRoom' not in enteredRooms:
         enteredRooms.append ('livingRoom')
 
-    while exitRoom == False:
+    while exitRoom == False:  #while the player is still in the room, operate the following functions
         userAction = raw_input('What would you like to do? ')
         if userAction in ['pick up gun', 'finesse gun', 'grab gun']:
             playerItems.append ('gun')
             print('You picked up a gun')
             
-        elif userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']:
+        elif userAction in ['Quit', 'kill thyself', 'commit rope wrap', 'commit bucket kick', 'commit death']: #Quit Function
             print('Thanks for playing, loser!')
             playerAlive = False
             break
             
-        elif userAction in ['pet dog', "massage dog's earlobes"]:
+        elif userAction in ['pet dog', "massage dog's earlobes"]: #must happen to remain alive
             print('You pet the dog and it vanishes like Spiderman in Infinity War. As it vanishes, a key appears')
             print('You pick the key up')
             playerItems.append ('blue key')
@@ -96,6 +96,8 @@ def livingRoom():
                 print('You find a door under the rug')
                 print('You decide to open it with the key that you found')
                 attic()
+            else:
+                print("You can't do that!")
                 
         else:
             print("That's not a command I recognize, Try again!")
